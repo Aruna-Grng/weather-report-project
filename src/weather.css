@@ -1,0 +1,73 @@
+form {
+  margin: 15px 0 13px 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul.details {
+  font-size: 23px;
+  line-height: 1.3;
+  margin-top: 22px;
+}
+
+ul.condition {
+  margin-top: 25px;
+}
+
+div.justify-content-between {
+  margin-bottom: 25px;
+}
+
+.container {
+  border-radius: 11px;
+  border: 1px solid #dfe1e5;
+  margin-top: 20px;
+  width: 650px;
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+}
+
+i.fa-cloud-sun {
+  font-size: 7rem;
+  color: rgb(0, 153, 255);
+  line-height: 1.3;
+  margin-left: 13px;
+}
+
+.temperature {
+  font-size: 6rem;
+  line-height: 1.2;
+}
+
+.units {
+  position: relative;
+  top: -4rem;
+  font-size: 20px;
+  margin-left: -15px;
+}
+
+.city {
+  font-weight: 600;
+  font-size: 32px;
+}
+
+#second {
+  margin-left: 20px;
+}
+
+#temperature-info {
+  margin-left: 38px;
+}
+
+.col-lg {
+  text-align: center;
+}
+
+i.icon {
+  font-size: 3rem;
+  padding-left: 0;
+  margin: 10px;
+  color: rgb(0, 153, 255);
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/c8e4260a0b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="src/weather.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form id="search-form">
+            <div class="row">
+                <div class="col-7">
+                    <input type="search" id="searchInput" placeholder="Enter City Name" autofocus="on"
+                        autocomplete="off" class="form-control" />
+                </div>
+                <div class="col-2">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+                <div class="col-2">
+                    <input type="submit" value="Current" class="btn btn-success" id="current-button" />
+                </div>
+            </div>
+        </form>
+
+        <div class="row justify-content-start">
+            <div class="col-4" id="first">
+                <i class="fas fa-cloud-sun"></i>
+            </div>
+            <div class="col-7" id="second">
+                <ul class="details">
+                    <li class="city"></li>
+                    <li class="time">
+                        Friday, 3:06 PM
+                    </li>
+                    <li id="weather-condition" style="text-transform:capitalize;"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="col-4" id="temperature-info">
+                <span class="temperature" id="temperature"> 30 </span>
+                <span class="units">
+                    <!-- <a href="#" id="fahrenheit-link">°F</a> | -->
+                    <a href="#" id="celsius-link">°C</a>
+                </span>
+            </div>
+            <div class="col-4">
+                <ul class="condition">
+                    <li>Feels like: <strong><span id="feels-like"></span>°C</strong></li>
+                    <li>Humidity: <strong><span id="humidity"></span>%</strong></li>
+                    <li>Wind: <strong><span id="wind-speed"></span> km/h</strong></li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="row">
+        <div class="col-lg">
+          Sun 26
+          <br />
+          <i class="fas fa-cloud-sun icon"></i>
+          <p class="num"><strong>93°</strong> | 81°</p>
+        </div>
+        <div class="col-lg">
+          Mon 27
+          <br />
+          <i class="fas fa-cloud-sun icon"></i>
+          <p class="num"><strong>91°</strong> | 78°</p>
+        </div>
+        <div class="col-lg">
+          Tue 28
+          <br />
+          <i class="fas fa-cloud-sun icon"></i>
+          <p class="num"><strong>86°</strong> | 76°</p>
+        </div>
+        <div class="col-lg">
+          Wed 29
+          <br />
+          <i class="fas fa-cloud-sun icon"></i>
+          <p class="num"><strong>92°</strong> | 79°</p>
+        </div>
+        <div class="col-lg">
+          Thu 30
+          <br />
+          <i class="fas fa-cloud-sun icon"></i>
+          <p class="num"><strong>96°</strong> | 78°</p>
+        </div>
+      </div> -->
+    </div>
+    <script src="src/weather.js"></script>
+</body>
+
+</html>
