@@ -94,7 +94,7 @@ function searchForm(event) {
 
 // this function esp made for default city info.
 function searchCity(city) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherInfo);
 }
 
@@ -108,7 +108,7 @@ function getGeoLocation(position) {
   console.log(position);
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
-  let geoApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
+  let geoApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(geoApiUrl).then(displayWeatherInfo);
 }
