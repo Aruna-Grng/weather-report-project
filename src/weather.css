@@ -53,6 +53,11 @@ i.fa-cloud-sun {
   font-size: 32px;
 }
 
+.builder-link {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 #second {
   margin-left: 20px;
 }
