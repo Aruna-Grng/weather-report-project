@@ -5,6 +5,7 @@ form {
 ul {
   list-style: none;
   padding: 0;
+  
 }
 
 ul.details {
@@ -51,15 +52,18 @@ i.fa-cloud-sun {
 .city {
   font-weight: 600;
   font-size: 32px;
+  margin-bottom: -25px;
 }
 
 .builder-link {
+  font-size: 12px;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #second {
-  margin-left: 20px;
+  padding-left: 0;
+  margin-top: 25px;
 }
 
 #temperature-info {
