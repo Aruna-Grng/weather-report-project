@@ -57,7 +57,7 @@ function formateDate(timestamp) {
 
 let apiKey = "28a9b26783d5b53ed2f25d7dd7717889";
 
-// stores the input value entered in the search bar.
+// STORES THE INPUT VALUE ENTERED IN THE SEARCH BAR.
 function searchForm(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#searchInput");
@@ -66,7 +66,7 @@ function searchForm(event) {
   searchCity(city); // calls "search" the function.
 }
 
-// this function esp made for default city info.
+// THIS FUNCTION ESP MADE FOR DEFAULT CITY INFO.
 function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherInfo);
@@ -89,10 +89,17 @@ function getGeoLocation(position) {
 
 // ******************************************************************************************
 
+
+// DISPLAY CITY NAME AND WEATHER INFO OF THE SPECIFIC CITY
 function displayWeatherInfo(response) {
   console.log(response);
   let displayCity = document.querySelector(".city");
   displayCity.innerHTML = response.data.name;
+
+  // weather-icon
+  let icons = response.data.weather[0].icon;
+  let iconElement = document.querySelector("#weather-icon");
+  iconElement.innerHTML = `<img src="icons/${icons}.png" />`;
 
   // date and time
   document.querySelector(".time").innerHTML = formateDate(response.data.dt * 1000);
