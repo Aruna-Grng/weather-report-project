@@ -72,6 +72,9 @@ function displayWeatherInfo(response) {
   let tempElement = document.querySelector("#temperature");
   tempElement.innerHTML = temperature;
 
+  fahrenheitLink.classList.remove("active");     
+  celsiusLink.classList.add("active");         
+
   // weather condition
   document.querySelector("#weather-condition").innerHTML =
     response.data.weather[0].description;
