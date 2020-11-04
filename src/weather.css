@@ -80,3 +80,12 @@ i.icon {
   margin: 10px;
   color: rgb(0, 153, 255);
 }
+
+.units .active {
+  color: black;
+} 
+
+.units .active:hover {
+  cursor: default;
+  text-decoration: none;
+}

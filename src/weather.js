@@ -17,44 +17,6 @@ function formateDate(timestamp) {
 }
 
 
-// // Feautre # 2
-// function searchFunc(event) {
-//   event.preventDefault();
-//   let cityInput = document.querySelector("#searchInput");
-
-//   let showCity = document.querySelector(".city");
-//   // showCity.innerHTML = cityInput.value; 'instead of if statement, it can be written this way.
-
-//   if (cityInput.value) {
-//     showCity.innerHTML = `${cityInput.value}`;
-//   }
-// }
-
-// let search = document.querySelector("#search-form");
-// search.addEventListener("submit", searchFunc);
-
-// // Feature # 3
-// function changeToFahrenheit(event) {
-//   event.preventDefault();
-//   let temperatureElement = document.querySelector("#temperature");
-//   temperatureElement.innerHTML = 91;
-// }
-
-// function changeToCelsius(event) {
-//   event.preventDefault();
-//   let temperatureElement = document.querySelector("#temperature");
-//   temperatureElement.innerHTML = 33;
-// }
-
-// let tempToFahrenheit = document.querySelector("#fahrenheit-link");
-// tempToFahrenheit.addEventListener("click", changeToFahrenheit);
-
-// let tempToCelsius = document.querySelector("#celsius-link");
-// tempToCelsius.addEventListener("click", changeToCelsius);
-
-// **********************************************************************************************************
-
-
 let apiKey = "28a9b26783d5b53ed2f25d7dd7717889";
 
 // STORES THE INPUT VALUE ENTERED IN THE SEARCH BAR.
@@ -104,7 +66,9 @@ function displayWeatherInfo(response) {
   // date and time
   document.querySelector(".time").innerHTML = formateDate(response.data.dt * 1000);
 
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+
+  let temperature = Math.round(celsiusTemperature);
   let tempElement = document.querySelector("#temperature");
   tempElement.innerHTML = temperature;
 
@@ -122,10 +86,38 @@ function displayWeatherInfo(response) {
   );
 }
 
+function changeToFahrenheit(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.add("active");      // ADDING "ACTIVE" CLASS IN FAHRENHEIT LINK
+  celsiusLink.classList.remove("active");      // REMOVING "ACTIVE" CLASS IN CELSIUS LINK
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9/5) + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+}
+
+function changeToCelsius(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.remove("active");     // REMOVING "ACTIVE" CLASS IN FAHRENHEIT LINK
+  celsiusLink.classList.add("active");         //  ADDING "ACTIVE" CLASS IN CELSIUS LINK
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+   
+}
+
+let celsiusTemperature = null;
+
 let searchRow = document.querySelector("#search-form");
 searchRow.addEventListener("submit", searchForm);
 
 let currentBtn = document.querySelector("#current-button");
 currentBtn.addEventListener("click", getPinHereLocation);
+
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", changeToFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", changeToCelsius);
 
 searchCity("Siddharthanagar"); // this is for search on load.
