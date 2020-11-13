@@ -10,12 +10,25 @@ function formateDate(timestamp) {
     minute = `0${minute}`;
   }
 
+  // To show the day of week instead of index of the day of week.
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let day = days[currentDate.getDay()];
 
   return `${day} ${hour}:${minute}`;
 }
 
+function forecastDay(timestamp) {
+  let dayForecast = new Date(timestamp);
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  let day = days[dayForecast.getDay()];
+  
+  return `${day}`;
+
+  // let hour = forecastDate.getHours();
+  // return `${hour}`;
+
+}
 
 let apiKey = "28a9b26783d5b53ed2f25d7dd7717889";
 
@@ -32,6 +45,9 @@ function searchForm(event) {
 function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherInfo);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 // *********** This funcitons for "Current" button ****************************************
@@ -51,6 +67,50 @@ function getGeoLocation(position) {
 
 // ******************************************************************************************
 
+// DISPLAY WEATHER FORECAST
+function displayForecast(response) {
+  console.log(response.data.list);
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+  let icon = null;
+  let maxTemperature = null;
+  let minTemperature = null;
+
+  for (let index = 2; index < 35; index += 8) {
+    forecast = response.data.list[index];
+    icon = forecast.weather[0].icon;
+    maxTemperature = Math.round(forecast.main.temp_max);
+    minTemperature = Math.round(forecast.main.temp_min);
+
+    forecastElement.innerHTML += `
+    <div class="col-lg">
+                ${forecastDay(forecast.dt*1000)}
+                <img src="icons/${icon}.png" />
+                <p class="num"><strong>${maxTemperature}°</strong> | ${minTemperature}°</p>
+            </div>
+    `;
+
+  }
+
+  // let forecastElement = document.querySelector("#forecast");
+  // let forecast = null;
+
+  // for (let index = 0; index < 6; index++) {
+  //     forecast = response.data.list[index];
+  //     forecastElement.innerHTML += `
+  //     <div class="col-lg">
+  //     ${forecastHour(forecast.dt*1000)}
+  //               <img src="icons/" alt="">
+  //               <p class="num"><strong>°</strong> | °</p>
+  //           </div>
+  //     `;
+
+  // }
+
+  
+}
 
 // DISPLAY CITY NAME AND WEATHER INFO OF THE SPECIFIC CITY
 function displayWeatherInfo(response) {
