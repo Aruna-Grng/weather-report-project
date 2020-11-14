@@ -1,6 +1,17 @@
 function formateDate(timestamp) {
   let currentDate = new Date(timestamp);
   let hour = currentDate.getHours();
+  let dd = "AM";
+
+  if (hour >= 12) {
+    hour-12
+    dd = "PM";
+  }
+
+  if (hour === 00) {
+    hour = 12;
+  }
+
   if (hour < 10) {
     hour = `0${hour}`;
   }
@@ -14,7 +25,7 @@ function formateDate(timestamp) {
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let day = days[currentDate.getDay()];
 
-  return `${day} ${hour}:${minute}`;
+  return `${day} ${hour}:${minute} ${dd}`;
 }
 
 // DISPLAY FORECAST DAY OF THE WEEK
@@ -95,7 +106,6 @@ function displayForecast(response) {
                 <p class="num"><strong>${maxTemperature}°</strong> | ${minTemperature}°</p>
             </div>
     `;
-
   }
 
   // For loop for displaying forecast hour by every three hours.
