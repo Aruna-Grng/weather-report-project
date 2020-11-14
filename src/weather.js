@@ -17,6 +17,7 @@ function formateDate(timestamp) {
   return `${day} ${hour}:${minute}`;
 }
 
+// DISPLAY FORECAST DAY OF THE WEEK
 function forecastDay(timestamp) {
   let dayForecast = new Date(timestamp);
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -24,11 +25,14 @@ function forecastDay(timestamp) {
   let day = days[dayForecast.getDay()];
   
   return `${day}`;
-
-  // let hour = forecastDate.getHours();
-  // return `${hour}`;
-
 }
+
+// DISPLAY FORECAST BY EVERY THREE HOUR
+// function forecastHour(timestamp) {
+//   let hourForecast = new Date(timestamp);
+//   let hour = hourForecast.getHours();
+//   return `${hour}`;
+// }
 
 let apiKey = "28a9b26783d5b53ed2f25d7dd7717889";
 
@@ -69,7 +73,7 @@ function getGeoLocation(position) {
 
 // DISPLAY WEATHER FORECAST
 function displayForecast(response) {
-  console.log(response.data.list);
+  console.log(response.data);
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
@@ -94,22 +98,28 @@ function displayForecast(response) {
 
   }
 
+  // For loop for displaying forecast hour by every three hours.
   // let forecastElement = document.querySelector("#forecast");
+  // forecastElement.innerHTML = null;
   // let forecast = null;
+  // let icon =null;
+  // let maxTemperature = null;
+  // let minTemperature = null;
 
   // for (let index = 0; index < 6; index++) {
-  //     forecast = response.data.list[index];
-  //     forecastElement.innerHTML += `
+  //   forecast = response.data.list[index];
+  //   icon = forecast.weather[0].icon;
+  //   maxTemperature = Math.round(forecast.main.temp_max);
+  //   minTemperature = Math.round(forecast.main.temp_min);
+
+  //   forecastElement.innerHTML += `
   //     <div class="col-lg">
   //     ${forecastHour(forecast.dt*1000)}
-  //               <img src="icons/" alt="">
-  //               <p class="num"><strong>°</strong> | °</p>
+  //               <img src="icons/${icon}.png" />
+  //               <p class="num"><strong>${maxTemperature}°</strong> | ${minTemperature}°</p>
   //           </div>
   //     `;
-
-  // }
-
-  
+  // }  
 }
 
 // DISPLAY CITY NAME AND WEATHER INFO OF THE SPECIFIC CITY

@@ -30,13 +30,6 @@ div.justify-content-between {
   background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
 }
 
-i.fa-cloud-sun {
-  font-size: 7rem;
-  color: rgb(0, 153, 255);
-  line-height: 1.3;
-  margin-left: 13px;
-}
-
 .temperature {
   font-size: 6rem;
   line-height: 1.2;
@@ -55,6 +48,16 @@ i.fa-cloud-sun {
   margin-bottom: -25px;
 }
 
+.col-lg {
+  text-align: center;
+
+}
+
+.col-lg img {
+  max-width: 100%;
+  height: auto;
+}
+
 .builder-link {
   font-size: 12px;
   text-align: center;
@@ -68,17 +71,6 @@ i.fa-cloud-sun {
 
 #temperature-info {
   margin-left: 38px;
-}
-
-.col-lg {
-  text-align: center;
-}
-
-i.icon {
-  font-size: 3rem;
-  padding-left: 0;
-  margin: 10px;
-  color: rgb(0, 153, 255);
 }
 
 .units .active {
