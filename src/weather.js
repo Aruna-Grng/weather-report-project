@@ -4,7 +4,7 @@ function formateDate(timestamp) {
   let dd = "AM";
 
   if (hour >= 12) {
-    hour-12
+    hour = hour-12
     dd = "PM";
   }
 
@@ -28,7 +28,7 @@ function formateDate(timestamp) {
   return `${day} ${hour}:${minute} ${dd}`;
 }
 
-// DISPLAY FORECAST DAY OF THE WEEK
+// DISPLAY FORECAST BY DAY OF THE WEEK
 function forecastDay(timestamp) {
   let dayForecast = new Date(timestamp);
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -87,7 +87,9 @@ function displayForecast(response) {
   console.log(response.data);
 
   let forecastElement = document.querySelector("#forecast");
+  // let forecastTemperatureElement = document.querySelector("#forecast-temperature");
   forecastElement.innerHTML = null;
+  // forecastTemperatureElement.innerHTML = null;
   let forecast = null;
   let icon = null;
   let maxTemperature = null;
