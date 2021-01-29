@@ -78,6 +78,9 @@ function getGeoLocation(position) {
   let geoApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(geoApiUrl).then(displayWeatherInfo);
+
+  geoApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apikey}&units=metric`;
+  axios.get(geoApiUrl).then(displayForecast);
 }
 
 // ******************************************************************************************
